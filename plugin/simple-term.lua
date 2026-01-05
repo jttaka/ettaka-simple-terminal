@@ -56,11 +56,6 @@ function ToggleFloatTerm()
   vim.cmd("startinsert")
 end
 
-vim.keymap.set({ "n", "t" }, "<leader>t", function()
-  vim.cmd("stopinsert")
-  ToggleFloatTerm()
-end, { desc = "Toggle buffer-local floating terminal" })
-
 vim.api.nvim_create_autocmd({"BufDelete", "BufWipeout"}, {
   callback = function(args)
     local term = float_terms[args.buf]
